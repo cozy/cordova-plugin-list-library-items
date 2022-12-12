@@ -43,6 +43,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Locale;
 import java.util.TimeZone;
 
 import okhttp3.OkHttpClient;
@@ -324,7 +325,7 @@ public class ListLibraryItems extends CordovaPlugin {
                 }
                 hb.add("Content-Length","" + FILE_SZ);
                 hb.add("Expect","100-continue");
-                hb.add("Date",RFC_1123);
+              //  hb.add("Date",RFC_1123);
                 final String contentType = hb.get("Content-Type");
 
                 try {
@@ -534,7 +535,7 @@ class DateFormatter {
 
     // This method format a Date to a RFC 1123 String
     public static String formatRfc1123DateTime(Date date, TimeZone timeZone) {
-        SimpleDateFormat dateFormat = new SimpleDateFormat(RFC_1123_DATE_TIME);
+        SimpleDateFormat dateFormat = new SimpleDateFormat(RFC_1123_DATE_TIME, Locale.US);
         if (timeZone != null) {
             dateFormat.setTimeZone(timeZone);
         }
